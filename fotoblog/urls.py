@@ -45,6 +45,7 @@ urlpatterns = [
     ), name='password_change_done'),
 
     path('signup', authentication.views.signup_page, name='signup'),
+    path('profile_photo/upload/', authentication.views.upload_profile_photo, name='profile_photo_upload'),
 
     # --- Blog ---
     path('home/', blog.views.home, name='home'),

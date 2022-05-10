@@ -4,8 +4,6 @@ from django.db import models
 class User(AbstractUser):
     CREATOR = 'CREATOR'
     SUBSCRIBER = 'SUBSCRIBER'
-
-
     ROLE_CHOICES = (
         (CREATOR, 'Créateur'),
         (SUBSCRIBER, 'Abonné'),

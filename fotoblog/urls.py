@@ -19,9 +19,14 @@ import authentication.views
 import blog.views
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
+    # --- Admin ---
     path('admin/', admin.site.urls),
 
+    # --- Authentication ---
     #path('', authentication.views.login_page, name='login'), # vue def
     #path('', authentication.views.LoginPage.as_view(), name='login'),  # vue class
     path('', LoginView.as_view(
@@ -41,5 +46,12 @@ urlpatterns = [
 
     path('signup', authentication.views.signup_page, name='signup'),
 
+    # --- Blog ---
     path('home/', blog.views.home, name='home'),
+    path('photo/upload/', blog.views.photo_upload, name='photo_upload'),
 ]
+
+if settings.DEBUG: # si on est dans notre environement de developpement
+    # Media servis dans l'environement de developpement
+    #    ( valable qu'en dev. Pour le deploiement il faudra trouver comment faire !)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

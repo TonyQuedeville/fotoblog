@@ -11,10 +11,19 @@
         {% if user.is_authenticated %}
             <p>Vous êtes connecté en tant que {{ request.user }} </p>
             <a href="{% url 'logout' %}">Se déconnecter</a>  
-            <p>Voulez vous 
-                <a href="{% url 'password_change' %}">
-                    changer votre mot de passe ?
-                </a>
+            <p>Voulez vous: 
+                <ul>
+                    <li>
+                        <a href="{% url 'password_change' %}">
+                            Changer votre mot de passe ?
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'photo_upload' %}">
+                            Télécharger une photo de profil ?
+                        </a>
+                    </li>
+                </ul>
             </p>
             
         {% endif %}    

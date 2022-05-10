@@ -97,7 +97,7 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-        'OPTIONS': { 'min_length':6, }
+        'OPTIONS': { 'min_length': 6, }
     },
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
     {'NAME': 'authentication.validators.ContainsNumberValidator',},
@@ -119,6 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+#STATICFILES_DIRS = [BASE_DIR.joinpath('static/')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -131,3 +132,7 @@ LOGIN_URL = 'login'
 # redirection vues génériques
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = LOGIN_URL
+
+MEDIA_URL = '/media/' # url d'hebergement des fichier telechargés par les utilisateurs
+#MEDIA_ROOT = 'media/' # Indique le repertoire de stockage des fichiers téléchargés
+MEDIA_ROOT = BASE_DIR.joinpath('media/')

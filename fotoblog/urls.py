@@ -27,15 +27,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # --- Authentication ---
-    #path('', authentication.views.login_page, name='login'), # vue def
-    #path('', authentication.views.LoginPage.as_view(), name='login'),  # vue class
+    # path('', authentication.views.login_page, name='login'), # vue def
+    # path('', authentication.views.LoginPage.as_view(), name='login'),  # vue class
     path('', LoginView.as_view(
         template_name='authentication/login.html',
         redirect_authenticated_user=True
     ), name='login'),  # Implémentation de la vue générique login
 
     path('logout/', LogoutView.as_view(), name='logout'),  # Implémentation de la vue générique logout
-    #path('logout/', authentication.views.logout_user, name='logout'),
+    # path('logout/', authentication.views.logout_user, name='logout'),
 
     path('password-change/', PasswordChangeView.as_view(
         template_name='authentication/password_change_form.html',
@@ -50,6 +50,13 @@ urlpatterns = [
     # --- Blog ---
     path('home/', blog.views.home, name='home'),
     path('photo/upload/', blog.views.photo_upload, name='photo_upload'),
+    path('blog/create/', blog.views.blog_and_photo_upload, name='blog_create'),
+    path('blog/<int:blog_id>/', blog.views.view_blog, name='view_blog'),
+    path('blog/<int:blog_id>/edit', blog.views.edit_blog, name='edit_blog'),
+    path('photo/upload-multiple/', blog.views.create_multiple_photos, name='create_multiple_photos'),
+    path('follow-users/', blog.views.follow_users, name='follow_users'),
+    path('photo-feed/', blog.views.photo_feed, name='photo_feed'),
+    path('photo-view/', blog.views.photo_view, name='photo_view'),
 ]
 
 if settings.DEBUG: # si on est dans notre environement de developpement

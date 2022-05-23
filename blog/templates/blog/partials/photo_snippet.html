@@ -1,0 +1,8 @@
+{% load blog_extras %}
+
+{{ photo.caption }}
+<p>Prise par {% get_poster_display photo.uploader %}</p>
+<img src="{{ photo.image.url }}" style="max-height:200px">
+{{ photo.date_created|get_posted_at_display }}
+
+<hr>

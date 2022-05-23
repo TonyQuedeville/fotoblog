@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+    <h2>Flux de photos</h2>
+    {% for photo in photos %} 
+        {% include 'blog/partials/photo_snippet.html' %} 
+    {% endfor %} 
+
+    <span>
+        {% if photos.has_previous %}
+            <a href="?page=1">« première</a>
+            <a href="?page={{ photos.previous_page_number }}">- précédente</a>
+        {% endif %}
+    
+        <span>
+            Page {{ photos.number }} / {{ photos.paginator.num_pages }}.
+        </span>
+
+        {% if photos.has_next %}
+            <a href="?page={{ photos.next_page_number }}">suivante -</a>            
+            <a href="?page={{ photos.paginator.num_pages }}">dernière »</a>
+        {% endif %}
+    </span>
+
+{% endblock content %}

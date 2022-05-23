@@ -18,6 +18,7 @@ html {
     padding-right: 10px;
 }
 
+
 /* The navigation menu links */
 .sidebar a {
     text-decoration: none;
@@ -49,7 +50,7 @@ html {
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    padding: 20px;
+    margin: 20px;
     text-align: center;
 }
 
